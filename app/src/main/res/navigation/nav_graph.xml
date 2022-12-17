@@ -37,7 +37,15 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.galleryapp.DetailsFragment"
+        android:name="com.example.galleryapp.ui.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+
+        <argument
+            android:name="hit"
+            app:argType="com.example.galleryapp.data.models.Hit"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
+    </fragment>
 </navigation>

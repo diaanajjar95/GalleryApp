@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.galleryapp.data.models.Hit
 import com.example.galleryapp.databinding.FragmentHomeBinding
 import com.example.galleryapp.ui.base.BaseFragment
@@ -34,8 +35,8 @@ class HomeFragment : BaseFragment() {
         imagesAdapter.setOnItemClickListener(object :
             ImagesAdapter.OnItemClickListener {
             override fun onItemClicked(view: View, item: Hit, position: Int) {
-//                val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item)
-//                findNavController().navigate(action)
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item)
+                findNavController().navigate(action)
             }
         })
 

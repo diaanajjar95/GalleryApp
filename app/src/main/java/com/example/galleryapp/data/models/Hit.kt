@@ -1,8 +1,11 @@
 package com.example.galleryapp.data.models
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class Hit(
     @Json(name = "collections")
@@ -49,4 +52,4 @@ data class Hit(
     val webformatURL: String,
     @Json(name = "webformatWidth")
     val webformatWidth: Int
-)
+) : Parcelable

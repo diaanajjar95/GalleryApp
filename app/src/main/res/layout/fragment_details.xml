@@ -21,7 +21,375 @@
             android:id="@+id/toolbarLayout"
             layout="@layout/view_layout_toolbar"
             app:title="@{item.user}"
-            app:withBackBtn="@{false}" />
+            app:withBackBtn="@{true}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="@dimen/dim_0dp"
+            android:layout_height="@dimen/dim_0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarLayout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_200dp"
+                    android:scaleType="centerCrop"
+                    app:appImageUrl="@{item.largeImageURL}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/imageDetailsSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_16dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/dim_8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/imageDetailsTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Medium"
+                            android:layout_width="@dimen/dim_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dim_8dp"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Image Details"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/imageSizeTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dim_16dp"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Size"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toStartOf="@+id/imageTypeTv"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageDetailsTv" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/imageSizeValueTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{String.valueOf(item.imageSize)}"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="@+id/imageSizeTv"
+                            app:layout_constraintStart_toStartOf="@+id/imageSizeTv"
+                            app:layout_constraintTop_toBottomOf="@id/imageSizeTv"
+                            tools:text="40" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/imageTypeTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dim_16dp"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Type"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageSizeTv"
+                            app:layout_constraintTop_toBottomOf="@id/imageDetailsTv" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/imageTypeValueTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{item.type}"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="@+id/imageTypeTv"
+                            app:layout_constraintStart_toStartOf="@+id/imageTypeTv"
+                            app:layout_constraintTop_toBottomOf="@id/imageTypeTv"
+                            tools:text="type" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/imageTagsTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="@dimen/dim_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/dim_8dp"
+                            android:layout_marginVertical="@dimen/dim_16dp"
+                            android:background="@null"
+                            android:text="@{item.tags}"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageTypeValueTv"
+                            tools:text="tags" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/userDetailsSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dim_16dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="@dimen/dim_8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageDetailsSection">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingBottom="@dimen/dim_16dp">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/userDetailsTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Medium"
+                            android:layout_width="@dimen/dim_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dim_8dp"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="User Details"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/nameTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dim_16dp"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="name"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toStartOf="@+id/viewsTv"
+                            app:layout_constraintHorizontal_chainStyle="spread"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/userDetailsTv" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/nameValueTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{item.user}"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="@+id/nameTv"
+                            app:layout_constraintStart_toStartOf="@+id/nameTv"
+                            app:layout_constraintTop_toBottomOf="@id/nameTv"
+                            tools:text="Diaa" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/viewsTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dim_16dp"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Views"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toStartOf="@+id/likesTv"
+                            app:layout_constraintStart_toEndOf="@+id/nameValueTv"
+                            app:layout_constraintTop_toBottomOf="@id/userDetailsTv" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/viewsValueTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{String.valueOf(item.views)}"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="@+id/viewsTv"
+                            app:layout_constraintStart_toStartOf="@+id/viewsTv"
+                            app:layout_constraintTop_toBottomOf="@id/viewsTv"
+                            tools:text="type" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/likesTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dim_16dp"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="likes"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/viewsTv"
+                            app:layout_constraintTop_toBottomOf="@id/userDetailsTv" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/likesValueTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{String.valueOf(item.likes)}"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="@+id/likesTv"
+                            app:layout_constraintStart_toStartOf="@+id/likesTv"
+                            app:layout_constraintTop_toBottomOf="@id/likesTv"
+                            tools:text="likes" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/commentsTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dim_16dp"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="comments"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toStartOf="@+id/favoritesTv"
+                            app:layout_constraintHorizontal_chainStyle="spread"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/nameValueTv" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/commentsValueTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{String.valueOf(item.comments)}"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="@+id/commentsTv"
+                            app:layout_constraintStart_toStartOf="@+id/commentsTv"
+                            app:layout_constraintTop_toBottomOf="@id/commentsTv"
+                            tools:text="comments" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/favoritesTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dim_16dp"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="favorites"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toStartOf="@+id/downloadsTv"
+                            app:layout_constraintStart_toEndOf="@+id/commentsTv"
+                            app:layout_constraintTop_toBottomOf="@id/nameValueTv" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/favoritesValueTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="dsa"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="@+id/favoritesTv"
+                            app:layout_constraintStart_toStartOf="@+id/favoritesTv"
+                            app:layout_constraintTop_toBottomOf="@id/favoritesTv"
+                            tools:text="type" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/downloadsTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dim_16dp"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="downloads"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/favoritesTv"
+                            app:layout_constraintTop_toBottomOf="@id/nameValueTv" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/downloadsValueTv"
+                            style="@style/Theme.GalleryApp.TextAppearance.Semibold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{String.valueOf(item.downloads)}"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/font_18sp"
+                            app:layout_constraintEnd_toEndOf="@+id/downloadsTv"
+                            app:layout_constraintStart_toStartOf="@+id/downloadsTv"
+                            app:layout_constraintTop_toBottomOf="@id/downloadsTv"
+                            tools:text="likes" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
