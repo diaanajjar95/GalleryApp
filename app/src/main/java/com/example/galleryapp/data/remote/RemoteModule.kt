@@ -24,9 +24,14 @@ val remoteModule = module {
     }
 
     single {
+        CustomInterceptor()
+    }
+
+    single {
         val builder = OkHttpClient.Builder()
         builder.readTimeout(30, TimeUnit.SECONDS)
         builder.connectTimeout(30, TimeUnit.SECONDS)
+        builder.addInterceptor(get<CustomInterceptor>())
         if (BuildConfig.DEBUG) {
             val logger = HttpLoggingInterceptor()
             logger.level = HttpLoggingInterceptor.Level.BODY

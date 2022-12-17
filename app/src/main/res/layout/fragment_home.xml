@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.HomeFragment">
+
+        <include
+            android:id="@+id/toolbarLayout"
+            layout="@layout/view_layout_toolbar"
+            app:title="@{title}"
+            app:withBackBtn="@{false}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/imagesRc"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/dim_16dp"
+            android:background="@null"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarLayout"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:itemCount="4"
+            tools:listitem="@layout/view_item_image" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

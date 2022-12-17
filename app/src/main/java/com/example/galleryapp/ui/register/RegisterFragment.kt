@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.galleryapp.R
 import com.example.galleryapp.databinding.FragmentRegisterBinding
 import com.example.galleryapp.ui.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -47,7 +49,7 @@ class RegisterFragment : BaseFragment() {
         }
 
         viewModel.navigate.observe(viewLifecycleOwner) {
-            // navigate to home
+            findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
         }
 
         binding.signUpBtn.setOnClickListener {

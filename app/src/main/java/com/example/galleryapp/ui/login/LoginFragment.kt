@@ -46,7 +46,7 @@ class LoginFragment : BaseFragment() {
         }
 
         viewModel.navigate.observe(viewLifecycleOwner) {
-            // navigate to home
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         }
 
         binding.accountHintTv.setOnClickListener {
