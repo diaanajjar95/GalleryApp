@@ -6,6 +6,6 @@ import retrofit2.http.GET
 interface ApiEndpoints {
 
     @GET("api")
-    suspend fun getProducts(): Response<Any>
+    suspend fun getImages(): Response<Any>
 
 }

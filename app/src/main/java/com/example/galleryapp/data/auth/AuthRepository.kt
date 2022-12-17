@@ -1,11 +1,14 @@
 package com.example.galleryapp.data.auth
 
-import com.example.galleryapp.data.remote.ApiDefaultResponse
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class AuthRepository(
     private val remoteDataSource: AuthDataSource
 ) : AuthDataSource {
-    override suspend fun login(email: String, password: String): ApiDefaultResponse<Any> {
-        TODO("Not yet implemented")
+    override suspend fun login(email: String, password: String): Boolean {
+        return withContext(Dispatchers.IO) {
+            remoteDataSource.login(email, password)
+        }
     }
 }

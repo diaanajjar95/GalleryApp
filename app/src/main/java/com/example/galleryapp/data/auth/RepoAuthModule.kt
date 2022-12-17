@@ -7,6 +7,10 @@ internal const val KOIN_NAME_AUTH_REMOTE_DATA_SOURCE = "KOIN_NAME_AUTH_REMOTE_DA
 
 val repoAuthModule = module {
 
+    single {
+        FakeAuthService()
+    }
+
     single<AuthDataSource> {
         AuthRepository(get(named(KOIN_NAME_AUTH_REMOTE_DATA_SOURCE)))
     }

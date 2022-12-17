@@ -35,10 +35,12 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dim_16dp"
             android:layout_marginTop="@dimen/dim_24dp"
+            app:errorIconDrawable="@null"
             app:layout_constraintTop_toBottomOf="@+id/msgTv">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -51,18 +53,20 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dim_16dp"
             android:layout_marginTop="@dimen/dim_24dp"
-            app:layout_constraintTop_toBottomOf="@+id/emailInputLayout"
-            app:passwordToggleEnabled="true">
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toBottomOf="@+id/emailInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="password" />
+                android:hint="password"
+                android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,9 +74,9 @@
             android:id="@+id/loginBtn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dim_56dp"
-            android:layout_margin="@dimen/dim_24dp"
-            android:backgroundTint="@color/colorBtn"
-            android:text="sign in"
+            android:layout_marginHorizontal="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_24dp"
+            android:text="login"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
