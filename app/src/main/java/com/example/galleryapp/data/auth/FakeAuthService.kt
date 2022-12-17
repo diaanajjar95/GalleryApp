@@ -12,4 +12,11 @@ class FakeAuthService {
         return true
     }
 
+    suspend fun signUp(email: String, age: String, password: String): Boolean {
+        runBlocking {
+            delay(3000)
+        }
+        return true
+    }
+
 }
