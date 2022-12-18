@@ -67,11 +67,11 @@
                             style="@style/Theme.GalleryApp.TextAppearance.Medium"
                             android:layout_width="@dimen/dim_0dp"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/dim_8dp"
+                            android:layout_margin="@dimen/dim_16dp"
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="Image Details"
+                            android:text="@string/image_details_text"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +86,7 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="Size"
+                            android:text="@string/size_text"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toStartOf="@+id/imageTypeTv"
                             app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +117,7 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="Type"
+                            android:text="@string/type_text"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/imageSizeTv"
@@ -144,8 +144,7 @@
                             style="@style/Theme.GalleryApp.TextAppearance.Semibold"
                             android:layout_width="@dimen/dim_0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/dim_8dp"
-                            android:layout_marginVertical="@dimen/dim_16dp"
+                            android:layout_margin="@dimen/dim_16dp"
                             android:background="@null"
                             android:text="@{item.tags}"
                             android:textColor="@color/gray"
@@ -159,7 +158,6 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </com.google.android.material.card.MaterialCardView>
-
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/userDetailsSection"
@@ -183,11 +181,11 @@
                             style="@style/Theme.GalleryApp.TextAppearance.Medium"
                             android:layout_width="@dimen/dim_0dp"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/dim_8dp"
+                            android:layout_margin="@dimen/dim_16dp"
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="User Details"
+                            android:text="@string/user_details_text"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -202,7 +200,7 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="name"
+                            android:text="@string/name_text"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toStartOf="@+id/viewsTv"
                             app:layout_constraintHorizontal_chainStyle="spread"
@@ -234,7 +232,7 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="Views"
+                            android:text="@string/views_text"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toStartOf="@+id/likesTv"
                             app:layout_constraintStart_toEndOf="@+id/nameValueTv"
@@ -265,7 +263,7 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="likes"
+                            android:text="@string/likes_text"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/viewsTv"
@@ -296,7 +294,7 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="comments"
+                            android:text="@string/comments_text"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toStartOf="@+id/favoritesTv"
                             app:layout_constraintHorizontal_chainStyle="spread"
@@ -328,7 +326,7 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="favorites"
+                            android:text="@string/favorites_text"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toStartOf="@+id/downloadsTv"
                             app:layout_constraintStart_toEndOf="@+id/commentsTv"
@@ -342,7 +340,7 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="dsa"
+                            android:text=""
                             android:textColor="@color/gray"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toEndOf="@+id/favoritesTv"
@@ -359,7 +357,7 @@
                             android:background="@null"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="downloads"
+                            android:text="@string/downloads_text"
                             android:textSize="@dimen/font_18sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/favoritesTv"
@@ -387,9 +385,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         </androidx.core.widget.NestedScrollView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

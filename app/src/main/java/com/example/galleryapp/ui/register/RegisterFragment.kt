@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.galleryapp.R
 import com.example.galleryapp.databinding.FragmentRegisterBinding
 import com.example.galleryapp.ui.base.BaseFragment
+import com.example.galleryapp.ui.base.BaseViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment : BaseFragment() {
@@ -25,14 +26,6 @@ class RegisterFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.message.observe(viewLifecycleOwner) {
-            showMessage(it)
-        }
-
-        viewModel.loading.observe(viewLifecycleOwner) {
-            showProgress(it)
-        }
 
         viewModel.errorMessage.observe(viewLifecycleOwner) {
             when (it.first) {
@@ -60,6 +53,10 @@ class RegisterFragment : BaseFragment() {
             )
         }
 
+    }
+
+    override fun getViewModel(): BaseViewModel? {
+        return viewModel
     }
 
 }

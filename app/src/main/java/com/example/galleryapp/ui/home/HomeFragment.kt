@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.galleryapp.R
 import com.example.galleryapp.data.models.Hit
 import com.example.galleryapp.databinding.FragmentHomeBinding
 import com.example.galleryapp.ui.base.BaseFragment
+import com.example.galleryapp.ui.base.BaseViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,7 +29,7 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.title = "Home"
+        binding.title = getString(R.string.home_text)
         binding.imagesRc.apply {
             adapter = imagesAdapter
         }
@@ -45,16 +47,11 @@ class HomeFragment : BaseFragment() {
             imagesAdapter.setItems(it)
         }
 
-        viewModel.loading.observe(viewLifecycleOwner) {
-            showProgress(it)
-        }
-
-        viewModel.message.observe(viewLifecycleOwner) {
-            showMessage(it)
-        }
-
         viewModel.getImages()
+    }
 
+    override fun getViewModel(): BaseViewModel? {
+        return viewModel
     }
 
 }

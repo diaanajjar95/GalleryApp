@@ -6,18 +6,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.galleryapp.data.auth.AuthDataSource
 import com.example.galleryapp.isValidEmail
 import com.example.galleryapp.isValidPassword
+import com.example.galleryapp.ui.base.BaseViewModel
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(
     private val repository: AuthDataSource
-) : ViewModel() {
-
-    private val _loading = LiveEvent<Boolean>()
-    val loading: LiveData<Boolean> = _loading
-
-    private val _message = LiveEvent<String>()
-    val message: LiveData<String> = _message
+) : BaseViewModel() {
 
     private val _errorMessage = LiveEvent<Pair<EnumUiFields, String>>()
     val errorMessage: LiveData<Pair<EnumUiFields, String>> = _errorMessage
@@ -32,7 +27,7 @@ class RegisterViewModel(
         }
 
         if (!email.isValidEmail()) {
-            _errorMessage.value = Pair(EnumUiFields.FIELD_EMAIL, "invalid email")
+            _errorMessage.value = Pair(EnumUiFields.FIELD_EMAIL, "The email must be valid")
             return
         }
 
@@ -42,7 +37,7 @@ class RegisterViewModel(
         }
 
         if (age.toInt() !in 18..99) {
-            _errorMessage.value = Pair(EnumUiFields.FIELD_AGE, "invalid age")
+            _errorMessage.value = Pair(EnumUiFields.FIELD_AGE, "The age must be limited between 18 and 99 years old")
             return
         }
 
@@ -54,19 +49,18 @@ class RegisterViewModel(
 
         if (!password.isValidPassword()) {
             _errorMessage.value =
-                Pair(EnumUiFields.FIELD_PASSWORD, "invalid password")
+                Pair(EnumUiFields.FIELD_PASSWORD, "The password must be between 6 and 12 characters long")
             return
         }
 
-        _loading.value = true
+        onStartLoading()
         viewModelScope.launch {
             val isSuccess = repository.signUp(email, age, password)
             if (isSuccess) {
                 _navigate.value = true
-                _loading.value = false
+                onLoadSuccess()
             } else {
-                _message.value = "something went wrong"
-                _loading.value = false
+                onLoadFailure("something went wrong")
             }
         }
     }

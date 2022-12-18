@@ -6,6 +6,7 @@ import kotlinx.coroutines.withContext
 class AuthRepository(
     private val remoteDataSource: AuthDataSource
 ) : AuthDataSource {
+
     override suspend fun login(email: String, password: String): Boolean {
         return withContext(Dispatchers.IO) {
             remoteDataSource.login(email, password)
@@ -17,4 +18,5 @@ class AuthRepository(
             remoteDataSource.signUp(email, age, password)
         }
     }
+
 }

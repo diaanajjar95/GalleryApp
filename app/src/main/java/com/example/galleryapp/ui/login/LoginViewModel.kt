@@ -1,23 +1,17 @@
 package com.example.galleryapp.ui.login
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.galleryapp.data.auth.AuthDataSource
 import com.example.galleryapp.isValidEmail
 import com.example.galleryapp.isValidPassword
+import com.example.galleryapp.ui.base.BaseViewModel
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
     private val repository: AuthDataSource
-) : ViewModel() {
-
-    private val _loading = LiveEvent<Boolean>()
-    val loading: LiveData<Boolean> = _loading
-
-    private val _message = LiveEvent<String>()
-    val message: LiveData<String> = _message
+) : BaseViewModel() {
 
     private val _errorMessage = LiveEvent<Pair<EnumUiFields, String>>()
     val errorMessage: LiveData<Pair<EnumUiFields, String>> = _errorMessage
@@ -32,7 +26,7 @@ class LoginViewModel(
         }
 
         if (!email.isValidEmail()) {
-            _errorMessage.value = Pair(EnumUiFields.FIELD_EMAIL, "invalid email")
+            _errorMessage.value = Pair(EnumUiFields.FIELD_EMAIL, "The email must be valid")
             return
         }
 
@@ -42,19 +36,21 @@ class LoginViewModel(
         }
 
         if (!password.isValidPassword()) {
-            _errorMessage.value = Pair(EnumUiFields.FIELD_PASSWORD, "invalid password")
+            _errorMessage.value = Pair(
+                EnumUiFields.FIELD_PASSWORD,
+                "The password must be between 6 and 12 characters long"
+            )
             return
         }
 
-        _loading.value = true
+        onStartLoading()
         viewModelScope.launch {
             val isSuccess = repository.login(email, password)
             if (isSuccess) {
                 _navigate.value = true
-                _loading.value = false
+                onLoadSuccess()
             } else {
-                _message.value = "something went wrong"
-                _loading.value = false
+                onLoadFailure("something went wrong")
             }
         }
     }

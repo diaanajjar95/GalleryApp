@@ -43,16 +43,16 @@
             android:id="@+id/userNameTv"
             style="@style/Theme.GalleryApp.TextAppearance.Medium"
             android:layout_width="@dimen/dim_0dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/dim_8dp"
             android:background="@null"
-            android:layout_height="wrap_content"
-            tools:text="User Name"
             android:text="@{item.user}"
-            android:textSize="@dimen/font_18sp"
             android:textColor="@color/white"
+            android:textSize="@dimen/font_18sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView" />
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            tools:text="User Name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

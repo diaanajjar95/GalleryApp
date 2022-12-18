@@ -7,36 +7,31 @@ import androidx.lifecycle.viewModelScope
 import com.example.galleryapp.data.images.ImagesDataSource
 import com.example.galleryapp.data.models.Hit
 import com.example.galleryapp.data.remote.ApiDefaultResponse
+import com.example.galleryapp.ui.base.BaseViewModel
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val repository: ImagesDataSource
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val _images: MutableLiveData<MutableList<Hit>> = MutableLiveData()
     val images: LiveData<MutableList<Hit>> = _images
 
-    private val _loading = LiveEvent<Boolean>()
-    val loading: LiveData<Boolean> = _loading
-
-    private val _message = LiveEvent<String>()
-    val message: LiveData<String> = _message
-
     fun getImages() {
-        _loading.value = true
+        onStartLoading()
         viewModelScope.launch {
             when (val result = repository.getImages()) {
                 is ApiDefaultResponse.Success -> {
                     result.body?.hits?.let {
                         _images.value = it
                     }
+                    onLoadSuccess()
                 }
                 is ApiDefaultResponse.Failed -> {
-                    _message.value = result.error.localizedMessage
+                    result.error.localizedMessage?.let { onLoadFailure(it) }
                 }
             }
-            _loading.value = false
         }
     }
 

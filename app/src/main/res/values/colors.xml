@@ -10,7 +10,6 @@
 
 
     <color name="colorBackground">#efedf7</color>
-    <color name="colorText">@color/black</color>
     <color name="colorBlue">#87aad8</color>
     <color name="gray">#AFAFAF</color>
 </resources>
